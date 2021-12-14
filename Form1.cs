@@ -368,7 +368,7 @@ namespace ToungeTwisterGames
             if (result == DialogResult.Yes)
             {
 
-                File.WriteAllText("C:\\Users\\Public\\LeaderBoard.txt", "");
+                File.WriteAllText(leaderBoardPath, "");
                 UpdateLeaderBoard();
                 while (flowLayoutPanel1.Controls.Count > 0)
                 {

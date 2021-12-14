@@ -124,13 +124,13 @@ namespace ToungeTwisterGames
                 nameLabel.Font = new Font("Segoe UI", 10, FontStyle.Regular);
 
                 int minutes = (int)leaderBoardDictionary[keys] / 60;
-                int seconds = (int)leaderBoardDictionary[keys] % 60;
+                double milliSecond = (int)leaderBoardDictionary[keys] % 60 + (leaderBoardDictionary[keys] - (int)leaderBoardDictionary[keys]);
                 String timeTaken = "";
                 if(minutes != 0)
                 {
                     timeTaken = minutes + " min ";
                 }
-                timeTaken = timeTaken + seconds + " sec";
+                timeTaken = timeTaken + milliSecond + " sec";
                 Label timerLabel = new Label();
                 timerLabel.Text = timeTaken;
                 timerLabel.Dock = DockStyle.Fill;

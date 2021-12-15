@@ -15,7 +15,7 @@ namespace ToungeTwisterGames
             int nHeightEllipse // width of ellipse
         );
 
-        int sNo = 1;
+        int sNo = 1, noOfControls = 0;
         DateTime curTime;
         Label currLabel;
         TextBox currParticipate;
@@ -151,13 +151,13 @@ namespace ToungeTwisterGames
             }
         }
 
-        public void AddNewChrono()
+        public void AddNewChrono(params String[] name)
         {
             FlowLayoutPanel chronoFlowLayout = new FlowLayoutPanel();
             chronoFlowLayout.FlowDirection = FlowDirection.LeftToRight;
             chronoFlowLayout.BackColor = Color.FromArgb(240, 240, 240);
             chronoFlowLayout.Margin = new Padding(10,0,0,12);
-            chronoFlowLayout.Size = new Size(725,39);
+            chronoFlowLayout.Size = new Size(813,39);
             chronoFlowLayout.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, chronoFlowLayout.Width, chronoFlowLayout.Height, 10, 10));
 
             Label sNoLabel = new Label();
@@ -181,11 +181,13 @@ namespace ToungeTwisterGames
             chronoFlowLayout.Controls.Add(staticName);
 
             TextBox nameBox = new TextBox();
-            nameBox.Size = new Size(250, 30);
+            if (name.Length > 0)
+                nameBox.Text = name[0];
+            nameBox.Size = new Size(300, 30);
             nameBox.BackColor = chronoFlowLayout.BackColor;
             nameBox.Margin = new Padding(0, 4, 0, 0);
             nameBox.Font = new Font("Arial", 12, FontStyle.Regular);
-            nameBox.Multiline = true;
+            //nameBox.Multiline = true;
             nameBox.ForeColor = Color.Black;
             chronoFlowLayout.Controls.Add(nameBox);
 
@@ -209,6 +211,9 @@ namespace ToungeTwisterGames
             timerLabel.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, timerLabel.Width, timerLabel.Height, 5, 5));
             timerLabel.ForeColor = Color.Black;
             chronoFlowLayout.Controls.Add(timerLabel);
+
+            currLabel = timerLabel;
+            currParticipate = nameBox;
 
             Button startButton = new Button();
             startButton.Text = "Start";
@@ -271,6 +276,8 @@ namespace ToungeTwisterGames
             endButton.MouseClick += (s, args) =>
             {
                 currLabel = timerLabel;
+                currParticipate = nameBox;
+                currLabel = timerLabel;
                 if(currLabel.Text != "00:00:00")
                 {
                     DialogResult dialog = MessageBox.Show("Are you sure?", "Reset Timer", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -300,6 +307,41 @@ namespace ToungeTwisterGames
             };
             chronoFlowLayout.Controls.Add(addChronoButton);
 
+            Button remChronoButton = new Button();
+            remChronoButton.Size = new Size(33, 33);
+            remChronoButton.Image = global::ToungeTwisterGames.Properties.Resources.subtraction;
+            remChronoButton.BackColor = chronoFlowLayout.BackColor;
+            remChronoButton.BackgroundImageLayout = ImageLayout.None;
+            remChronoButton.FlatStyle = FlatStyle.Flat;
+            remChronoButton.FlatAppearance.BorderSize = 0;
+            remChronoButton.FlatAppearance.MouseDownBackColor = chronoFlowLayout.BackColor;
+            remChronoButton.Margin = new Padding(5, 2, 0, 0);
+            remChronoButton.FlatAppearance.MouseOverBackColor = addChronoButton.BackColor;
+            remChronoButton.MouseClick += (s, args) =>
+            {
+                if (noOfControls == 1)
+                    return;
+                currLabel = timerLabel;
+                currParticipate = nameBox;
+                List<String> leaderBoardArray = File.ReadAllLines(leaderBoardPath).ToList();
+                String temp = "";
+
+                foreach(String str in leaderBoardArray)
+                {
+                    if (str.Length == 0)
+                        continue;
+
+                    if (str.Substring(0,str.IndexOf("@")).Trim().ToLower().Equals(nameBox.Text.ToLower()))
+                        continue;
+                    temp = temp + str + "\n";
+                }
+                File.WriteAllText(leaderBoardPath,temp);
+                UpdateLeaderBoard();
+                chronoFlowLayout.Dispose();
+                //noOfControls--;
+            };
+            chronoFlowLayout.Controls.Add(remChronoButton);
+            noOfControls++;
             flowLayoutPanel1.Controls.Add(chronoFlowLayout);
         }
 
@@ -330,6 +372,7 @@ namespace ToungeTwisterGames
             resetBoard.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, resetBoard.Width, resetBoard.Height, 7, 7));
             addParticipants.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, addParticipants.Width, addParticipants.Height, 7, 7));
             addTwisters.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, addTwisters.Width, addTwisters.Height, 7, 7));
+            useName.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, useName.Width, useName.Height, 7, 7));
             AddNewChrono();
             UpdateLeaderBoard();
         }
@@ -408,6 +451,19 @@ namespace ToungeTwisterGames
             if (actualNames.Count == 0) return;
             prevParticipant = actualNames.ElementAt(r.Next(actualNames.Count));
             nameBox.Text = prevParticipant;
+        }
+
+        private void useName_Click(object sender, EventArgs e)
+        {
+            if (nameBox.Text.Length > 0)
+            {
+                if (currParticipate.Text == nameBox.Text)
+                    return;
+                if (currParticipate.Text.Length == 0)
+                    currParticipate.Text = nameBox.Text;
+                else
+                    AddNewChrono(nameBox.Text);
+            }
         }
 
         private void randomTwister_Click(object sender, EventArgs e)

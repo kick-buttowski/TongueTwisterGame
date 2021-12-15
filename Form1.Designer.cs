@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rankLabel = new System.Windows.Forms.Label();
             this.panelName = new System.Windows.Forms.Panel();
+            this.useName = new System.Windows.Forms.Button();
             this.nameBox = new System.Windows.Forms.Button();
             this.namePicker = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -65,7 +66,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 35);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(760, 783);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(848, 783);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -74,7 +75,7 @@
             this.panel1.Controls.Add(this.leaderBoard);
             this.panel1.Controls.Add(this.panelName);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(776, 35);
+            this.panel1.Location = new System.Drawing.Point(864, 35);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(710, 783);
             this.panel1.TabIndex = 1;
@@ -175,12 +176,30 @@
             // panelName
             // 
             this.panelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.panelName.Controls.Add(this.useName);
             this.panelName.Controls.Add(this.nameBox);
             this.panelName.Controls.Add(this.namePicker);
             this.panelName.Location = new System.Drawing.Point(10, 210);
             this.panelName.Name = "panelName";
             this.panelName.Size = new System.Drawing.Size(690, 42);
             this.panelName.TabIndex = 2;
+            // 
+            // useName
+            // 
+            this.useName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.useName.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.useName.FlatAppearance.BorderSize = 0;
+            this.useName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.useName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.useName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.useName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.useName.Location = new System.Drawing.Point(626, 3);
+            this.useName.Name = "useName";
+            this.useName.Size = new System.Drawing.Size(61, 36);
+            this.useName.TabIndex = 3;
+            this.useName.Text = "Use";
+            this.useName.UseVisualStyleBackColor = false;
+            this.useName.Click += new System.EventHandler(this.useName_Click);
             // 
             // nameBox
             // 
@@ -192,7 +211,7 @@
             this.nameBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nameBox.Location = new System.Drawing.Point(184, 4);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(503, 34);
+            this.nameBox.Size = new System.Drawing.Size(440, 34);
             this.nameBox.TabIndex = 2;
             this.nameBox.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.nameBox.UseVisualStyleBackColor = false;
@@ -208,7 +227,7 @@
             this.namePicker.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.namePicker.Location = new System.Drawing.Point(4, 3);
             this.namePicker.Name = "namePicker";
-            this.namePicker.Size = new System.Drawing.Size(178, 35);
+            this.namePicker.Size = new System.Drawing.Size(178, 36);
             this.namePicker.TabIndex = 1;
             this.namePicker.Text = "Name Picker";
             this.namePicker.UseVisualStyleBackColor = false;
@@ -261,7 +280,7 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(1442, -10);
+            this.button1.Location = new System.Drawing.Point(1530, -10);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(54, 41);
@@ -279,7 +298,7 @@
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(1389, -20);
+            this.button2.Location = new System.Drawing.Point(1477, -20);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(54, 51);
@@ -304,7 +323,7 @@
             this.resetLeaderBoard.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.resetLeaderBoard.Location = new System.Drawing.Point(10, -3);
             this.resetLeaderBoard.Name = "resetLeaderBoard";
-            this.resetLeaderBoard.Size = new System.Drawing.Size(377, 33);
+            this.resetLeaderBoard.Size = new System.Drawing.Size(421, 33);
             this.resetLeaderBoard.TabIndex = 2;
             this.resetLeaderBoard.Text = "Reset Entries";
             this.resetLeaderBoard.UseVisualStyleBackColor = false;
@@ -319,9 +338,9 @@
             this.resetBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.resetBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetBoard.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.resetBoard.Location = new System.Drawing.Point(393, -3);
+            this.resetBoard.Location = new System.Drawing.Point(437, -3);
             this.resetBoard.Name = "resetBoard";
-            this.resetBoard.Size = new System.Drawing.Size(377, 33);
+            this.resetBoard.Size = new System.Drawing.Size(421, 33);
             this.resetBoard.TabIndex = 3;
             this.resetBoard.Text = "Reset Leader Board and Entries";
             this.resetBoard.UseVisualStyleBackColor = false;
@@ -336,7 +355,7 @@
             this.addParticipants.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.addParticipants.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addParticipants.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addParticipants.Location = new System.Drawing.Point(776, -3);
+            this.addParticipants.Location = new System.Drawing.Point(864, -3);
             this.addParticipants.Name = "addParticipants";
             this.addParticipants.Size = new System.Drawing.Size(302, 33);
             this.addParticipants.TabIndex = 4;
@@ -353,7 +372,7 @@
             this.addTwisters.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.addTwisters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addTwisters.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addTwisters.Location = new System.Drawing.Point(1084, -3);
+            this.addTwisters.Location = new System.Drawing.Point(1172, -3);
             this.addTwisters.Name = "addTwisters";
             this.addTwisters.Size = new System.Drawing.Size(302, 33);
             this.addTwisters.TabIndex = 5;
@@ -366,7 +385,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
-            this.ClientSize = new System.Drawing.Size(1496, 828);
+            this.ClientSize = new System.Drawing.Size(1585, 828);
             this.Controls.Add(this.addTwisters);
             this.Controls.Add(this.addParticipants);
             this.Controls.Add(this.resetBoard);
@@ -411,5 +430,6 @@
         private Button resetBoard;
         private Button addParticipants;
         private Button addTwisters;
+        private Button useName;
     }
 }

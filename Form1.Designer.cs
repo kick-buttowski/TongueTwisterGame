@@ -248,6 +248,7 @@
             this.twisterLabel.Location = new System.Drawing.Point(5, 43);
             this.twisterLabel.Margin = new System.Windows.Forms.Padding(0);
             this.twisterLabel.Name = "twisterLabel";
+            this.twisterLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.twisterLabel.Size = new System.Drawing.Size(680, 125);
             this.twisterLabel.TabIndex = 0;
             this.twisterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

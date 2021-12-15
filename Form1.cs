@@ -20,9 +20,9 @@ namespace ToungeTwisterGames
         Label currLabel;
         TextBox currParticipate;
         Random r = new Random();
-        String leaderBoardPath = Environment.CurrentDirectory + "\\Leader_Board.txt";
-        String participantsPath = Environment.CurrentDirectory + "\\Participants.txt";
-        String twistersPath = Environment.CurrentDirectory + "\\Tongue_Twisters.txt";
+        String leaderBoardPath = Environment.CurrentDirectory + "\\Assets\\Leader_Board.txt";
+        String participantsPath = Environment.CurrentDirectory + "\\Assets\\Participants.txt";
+        String twistersPath = Environment.CurrentDirectory + "\\Assets\\Tongue_Twisters.txt";
         String prevParticipant = "NotANamexD", prevTwister = "ObviouslyNotATwisterAgainxD";
 
         public double trimZeroes(String input)
@@ -306,6 +306,8 @@ namespace ToungeTwisterGames
         public Form1()
         {
             InitializeComponent();
+            if (!Directory.Exists(Environment.CurrentDirectory + "\\Assets"))
+                Directory.CreateDirectory(Environment.CurrentDirectory + "\\Assets");
             if (!File.Exists(leaderBoardPath))
                 using (var myFile = File.Create(leaderBoardPath)) { }
             if (!File.Exists(participantsPath))
